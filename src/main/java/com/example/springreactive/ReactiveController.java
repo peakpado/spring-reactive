@@ -2,23 +2,28 @@ package com.example.springreactive;
 
 import com.example.springreactive.data.ReactiveUserRepository;
 import com.example.springreactive.data.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
-
 import java.time.Duration;
 
 @RestController
 public class ReactiveController {
-    private final ReactiveUserRepository reactiveUserRepository;
 
-    //Note Spring Boot 4.3+ autowires single constructors now
-    public ReactiveController(ReactiveUserRepository reactiveUserRepository) {
-        this.reactiveUserRepository = reactiveUserRepository;
-    }
+//    @Autowired
+//    private UserRepository userRepository;
 
-    @GetMapping("mongo")
-    public Flux<User> mongoPerson() {
+    @Autowired
+    private ReactiveUserRepository reactiveUserRepository;
+
+//    @GetMapping("mongo")
+//    public Iterable<User> mongoPerson() {
+//        return userRepository.findAll();
+//    }
+
+    @GetMapping("mongo/reactive")
+    public Flux<User> mongoReactive() {
         return reactiveUserRepository.findAll();
     }
 
