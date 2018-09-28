@@ -30,7 +30,7 @@ public class ReactorTest {
         logger.info("waiting thread: " + Thread.currentThread().getName());
         t.join();
 
-        Thread.currentThread().sleep(3000);
+        Thread.currentThread().sleep(2000);
     }
 
     @Test
