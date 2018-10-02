@@ -4,8 +4,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import reactor.core.publisher.Flux;
+import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
+import reactor.test.StepVerifier;
 
 import java.util.Arrays;
 import java.util.List;
@@ -13,6 +15,20 @@ import java.util.List;
 public class ReactorTest {
     private static Logger logger = LoggerFactory.getLogger(ReactorTest.class);
 
+    public <T> Flux<T> appendBoomError(Flux<T> source) {
+        return source.concatWith(Mono.error(new IllegalArgumentException("boom")));
+    }
+
+    @Test
+    public void testAppendBoomError() {
+        Flux<String> source = Flux.just("foo", "bar");
+
+        StepVerifier.create(appendBoomError(source))
+                .expectNext("foo")
+                .expectNext("bar")
+                .expectErrorMessage("boom")
+                .verify();
+    }
 
     @Test
     public void testSubscribeOn() throws InterruptedException {
