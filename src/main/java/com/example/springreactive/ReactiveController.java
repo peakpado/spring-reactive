@@ -43,7 +43,7 @@ public class ReactiveController {
         return Mono.just("Hey mister ")
                 .concatWith(body
 //                        .flatMap(sir -> Flux.fromArray(sir.getLastname().split("")))
-                        .map(p -> p.getFirstname())
+                        .map(p -> p.getUsername())
                         .map(String::toUpperCase)
 //                        .take(1)
                 ).concatWith(Mono.just(". how are you?"));

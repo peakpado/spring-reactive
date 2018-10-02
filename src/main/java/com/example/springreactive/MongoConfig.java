@@ -25,7 +25,7 @@ import org.springframework.data.mongodb.repository.config.EnableReactiveMongoRep
 //}
 
 @EnableReactiveMongoRepositories
-class ApplicationConfig extends AbstractReactiveMongoConfiguration {
+class MongoConfig extends AbstractReactiveMongoConfiguration {
 
     @Override
     protected String getDatabaseName() {

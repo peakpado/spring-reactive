@@ -1,0 +1,2 @@
+rootProject.name = 'spring-reactive'
+enableFeaturePreview('IMPROVED_POM_SUPPORT')
