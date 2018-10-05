@@ -1,5 +1,6 @@
 package com.example.springreactive.data;
 
+import com.example.springreactive.model.User;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.data.mongodb.repository.Tailable;
 import org.springframework.data.repository.reactive.ReactiveCrudRepository;
@@ -10,7 +11,7 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface ReactiveUserRepository extends ReactiveCrudRepository<User, String> {
 
-    Flux<User> findByLastname(String lastname);
+    Mono<User> findByUsername(String username);
 
     @Query("{ 'firstname': ?0, 'lastname': ?1}")
     Mono<User> findByFirstnameAndLastname(String firstname, String lastname);

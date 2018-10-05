@@ -1,8 +1,9 @@
 package com.example.springreactive;
 
-import com.example.springreactive.data.PersonalityReport;
-import com.example.springreactive.data.Profile;
-import com.example.springreactive.data.User;
+import com.example.springreactive.model.PersonalityReport;
+import com.example.springreactive.model.DateOfBirth;
+import com.example.springreactive.model.SentimentResponse;
+import com.example.springreactive.model.User;
 import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,12 +23,12 @@ public class WebClientTest {
         String text = "this is good";
         String apikey = "375ba53c-5f17-4abc-9fb3-41219e5269cc";
 
-        Mono<PersonalityReport> personality = WebClient.create("https://api.havenondemand.com/1")
+        Mono<SentimentResponse> personality = WebClient.create("https://api.havenondemand.com/1")
                 .get()
                 .uri("/api/sync/analyzesentiment/v2?apikey={apikey}&text={text}", apikey, text)
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()
-                .bodyToMono(PersonalityReport.class);
+                .bodyToMono(SentimentResponse.class);
 
         personality.log()
                 .subscribe(p -> {
@@ -45,13 +46,13 @@ public class WebClientTest {
                 .filter(basicAuthentication("602919", "2376ab63f0424bd6f69c1778e2f131a1"))
                 .build();
 
-        Profile profile = new Profile(1966, 6, 5, 1, 3, 19.2056, 25.249, 7);
+        DateOfBirth dateOfBirth = new DateOfBirth(1966, 6, 5, 1, 3, 19.2056, 25.249, 7);
 
         Mono<PersonalityReport> personality = client.post()
                 .uri("/personality_report/tropical")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON)
-                .syncBody(profile)
+                .syncBody(dateOfBirth)
                 .retrieve()
                 .bodyToMono(PersonalityReport.class);
 

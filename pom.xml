@@ -49,15 +49,23 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.fasterxml.jackson.module</groupId>
+			<artifactId>jackson-module-kotlin</artifactId>
+			<version>2.9.4.1</version>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>io.projectreactor</groupId>
 			<artifactId>reactor-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.jetbrains.kotlin</groupId>
 			<artifactId>kotlin-test</artifactId>
@@ -94,6 +102,28 @@
 				</executions>
 				<configuration>
 					<jvmTarget>1.8</jvmTarget>
+					<plugin>
+						<artifactId>kotlin-maven-plugin</artifactId>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<version>${kotlin.version}</version>
+
+						<configuration>
+							<compilerPlugins>
+								<plugin>no-arg</plugin>
+							</compilerPlugins>
+
+							<pluginOptions>
+								<option>no-arg:annotation=com.example.springreactive.model.NoArg</option>
+							</pluginOptions>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.jetbrains.kotlin</groupId>
+								<artifactId>kotlin-maven-noarg</artifactId>
+								<version>${kotlin.version}</version>
+							</dependency>
+						</dependencies>
+					</plugin>
 				</configuration>
 			</plugin>
 			<plugin>

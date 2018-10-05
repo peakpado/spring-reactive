@@ -1,4 +1,4 @@
-package com.example.springreactive.data
+package com.example.springreactive.model
 
 import org.springframework.data.annotation.Id
 import org.springframework.data.mongodb.core.mapping.Document
@@ -6,14 +6,14 @@ import org.springframework.data.mongodb.core.mapping.Document
 @Document(collection = "users")
 data class User(
         @Id
-        var id: String = "",
-        val username: String? = null,
-        val firstname: String = "",
-        val lastname: String = "",
-        val profile: Profile? = null
+//        val id: String,
+        val username: String,
+        val firstname: String,
+        val lastname: String,
+        val dateOfBirth: DateOfBirth
 )
 
-data class Profile(
+data class DateOfBirth(
         val year: Int,
         val month: Int,
         val day: Int,

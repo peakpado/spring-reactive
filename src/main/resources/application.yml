@@ -1,16 +1,21 @@
 
 
-logging.level.reactor.ipc.netty.channel.ContextHandler=info
-logging.level.reactor.ipc.netty.http.client.HttpClient=info
-
-# Astrology API configuration. The API key is only valid for 14 days.
-# Free 14 days trial API key can be get from https://www.astrologyapi.com/signup/
-astroloy_api:
+#logging:
+#  level:
+#   - reactor.ipc.netty.channel.ContextHandler=info
+#     reactor.ipc.netty.http.client.HttpClient=info
+astroloy-api:
   url: https://json.astrologyapi.com/v1
+  personalityPath: /personality_report/tropical
   userId: 602919
   apiKey: 2376ab63f0424bd6f69c1778e2f131a1
 
+## Astrology API configuration. The API key is only valid for 14 days.
+## Free 14 days trial API key can be get from https://www.astrologyapi.com/signup/
+
+
 # HP HAVEN OnDemand API configuration. Free API key can be get from https://www.havenondemand.com/
-haven_api:
-  url: https://api.havenondemand.com/1/api/sync/analyzesentiment/v2
+haven-api:
+  url: https://api.havenondemand.com/1
+  sentimentPath: /api/sync/analyzesentiment/v2
   apiKey: 375ba53c-5f17-4abc-9fb3-41219e5269cc

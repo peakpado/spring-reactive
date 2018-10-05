@@ -20,6 +20,16 @@ public class ReactorTest {
     }
 
     @Test
+    public void testSorting() throws InterruptedException {
+        Flux.just(9, 3, 1, 4, 6, 2)
+                .sort()
+                .last()
+                .subscribe(System.out::println);
+
+        Thread.currentThread().sleep(2000);
+    }
+
+    @Test
     public void testAppendBoomError() {
         Flux<String> source = Flux.just("foo", "bar");
 
