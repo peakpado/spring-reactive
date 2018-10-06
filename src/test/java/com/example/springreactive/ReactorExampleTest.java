@@ -68,5 +68,6 @@ public class ReactorExampleTest {
         fewWords.subscribe(System.out::println);
         System.out.println();
         manyWords.subscribe(System.out::println);
+        manyWords.subscribe(w -> System.out.println(w));
     }
 }

@@ -27,7 +27,7 @@ data class Sentiment(
         val original_length: Int,
         val normalized_text: String,
         val normalized_length: Int,
-        val offset: Int
+        val offset: Int?
 )
 
 @NoArg

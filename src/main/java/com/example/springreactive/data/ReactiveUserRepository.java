@@ -13,14 +13,14 @@ public interface ReactiveUserRepository extends ReactiveCrudRepository<User, Str
 
     Mono<User> findByUsername(String username);
 
-    @Query("{ 'firstname': ?0, 'lastname': ?1}")
-    Mono<User> findByFirstnameAndLastname(String firstname, String lastname);
-
-    // Accept parameter inside a reactive type for deferred execution
-    Flux<User> findByLastname(Mono<String> lastname);
-
-    Mono<User> findByFirstnameAndLastname(Mono<String> firstname, String lastname);
-
-    @Tailable  // Use a tailable cursor
-    Flux<User> findWithTailableCursorBy();
+//    @Query("{ 'firstname': ?0, 'lastname': ?1}")
+//    Mono<User> findByFirstnameAndLastname(String firstname, String lastname);
+//
+//    // Accept parameter inside a reactive type for deferred execution
+//    Flux<User> findByLastname(Mono<String> lastname);
+//
+//    Mono<User> findByFirstnameAndLastname(Mono<String> firstname, String lastname);
+//
+//    @Tailable  // Use a tailable cursor
+//    Flux<User> findWithTailableCursorBy();
 }

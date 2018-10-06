@@ -75,7 +75,7 @@ public class WebClientTest {
                 .bodyToFlux(User.class);
 
         result.log().subscribe(u -> {
-            logger.info(u.getFirstname());
+            logger.info(u.getUsername());
         });
 //        result.toStream()
 //        .forEach(u -> logger.info(u.getFirstname()));
