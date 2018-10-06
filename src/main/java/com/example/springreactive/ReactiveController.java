@@ -50,8 +50,7 @@ public class ReactiveController {
     public Mono<User> createUser(@RequestBody User user) {
         // check dateOfBirth is valid
         if (!isDateOfBirthValid(user.getDateOfBirth())) {
-            return Mono
-                    .error(new ApiException("The date of birth of user is invalid or one of values is out of range", HttpStatus.BAD_REQUEST));
+            throw new ApiException("The date of birth of user is invalid or one of values is out of range", HttpStatus.BAD_REQUEST);
         }
 
         // check exist
